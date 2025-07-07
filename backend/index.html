@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Socket.IO Test</title>
+</head>
+
+<body>
+    <h1>Socket.IO Client Test</h1>
+    <pre id="output"></pre>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        const socket = io('http://localhost:5001');
+        const output = document.getElementById('output');
+
+        socket.on('connect', () => {
+            log(`✅ Connected with ID: ${socket.id}`);
+        });
+
+        socket.on('players update', (players) => {
+            log(`🎮 Players Update:\n${JSON.stringify(players, null, 2)}`);
+        });
+
+        function log(message) {
+            console.log(message);
+            output.textContent += message + '\n';
+        }
+    </script>
+</body>
+
+</html>
