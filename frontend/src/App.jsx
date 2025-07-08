@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useRef } from 'react';
 
-const socket = io('http://localhost:5001');
+const socket = io('https://hide-and-seek-81nl.onrender.com');
 
 const PLAYER_RADIUS = 25;
 const VISIBLE_DISTANCE = 100;
