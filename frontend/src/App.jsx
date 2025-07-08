@@ -8,9 +8,23 @@ const socket = io(import.meta.env.VITE_BACKEND_URL);
 const PLAYER_RADIUS = 25;
 const VISIBLE_DISTANCE = 100;
 
+
+const audioRef = useRef(null);
+
+const playAudio = () => {
+  audioRef.current.play();
+};
+
+
 function isWithinRadius(p1, p2, radius = VISIBLE_DISTANCE) {
   const dx = p1.x - p2.x;
   const dy = p1.y - p2.y;
+  playAudio();
+
+  // const pauseAudio = () => {
+  //   audioRef.current.pause();
+  // };
+
   return Math.sqrt(dx * dx + dy * dy) <= radius;
 }
 
@@ -65,10 +79,12 @@ function App() {
 
     <div className="relative w-screen h-screen bg-gradient-to-br from-purple-300 via-pink-200 to-blue-200 overflow-hidden">
       {/* Overlay header and role box */}
-      <audio autoPlay loop>
+      {/* <audio autoPlay loop>
         <source src="/music/background.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
-      </audio>
+      </audio> */}
+
+      <audio ref={audioRef} src="/music/caught.mp3" />
 
 
       <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10 text-center">
