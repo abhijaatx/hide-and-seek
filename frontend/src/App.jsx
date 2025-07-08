@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useRef } from 'react';
 
-const socket = io('https://hide-and-seek-81nl.onrender.com');
+
+const socket = io(import.meta.env.VITE_BACKEND_URL);
 
 const PLAYER_RADIUS = 25;
 const VISIBLE_DISTANCE = 100;
@@ -29,7 +30,7 @@ function App() {
       if (!me) return;
 
       let { x, y } = me;
-      const step = me.role === 'seeker' ? 15 : 8;
+      const step = me.role === 'seeker' ? 25 : 18;
 
       switch (e.key) {
         case 'ArrowUp':
