@@ -81,7 +81,9 @@ io.on('connection', (socket) => {
             }
         }
 
-        io.emit('players update', players);
+        setInterval(() => {
+            io.emit('players update', players);
+        }, 50);
     });
 
     socket.on('disconnect', () => {
